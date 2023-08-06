@@ -1,3 +1,19 @@
+from lectura_archivo import lectura_archivo
+
+lectura = lectura_archivo()
+
+
+def cargar_Inventario():
+    ruta = input("ingrese la ruta: ")
+    print("")
+    print("----------------Productos agregados----------------")
+    lectura.cargar_inventario_inicial(ruta)
+
+def cargar_Movimeinto():
+    ruta = input("ingrese la ruta: ")
+    print("")
+    print("----------------Productos ----------------")
+    lectura.cargar_instruccion_movimiento(ruta)
 
 
 def menu_principal():
@@ -10,23 +26,27 @@ def menu_principal():
     print("1. Cargar Inventario inicial")    
     print("2. Cargar Instrucciones de movimientos")    
     print("3. Crear Informe de invetario") 
-    print("4. Vender producto")
-    print("5. Salir") 
+    print("4. Salir") 
     print("")
-    opciones = int(input("Ingrese una opcion: "))    
+
+    opciones = int(input("Ingrese una opcion: "))   
+
     if opciones == 1:
-        print("opcion 1")
+        try:
+            cargar_Inventario()
+        except:
+            print("No se encontro el archivo :(")
         menu_principal()
     elif opciones == 2:
-        print("opcion 2")
+        try:
+            cargar_Movimeinto()
+        except:
+            print("No se encontro el archivo :(")
         menu_principal()
     elif opciones == 3:
-        print("opcion 4")
+        print("opcion 3")
         menu_principal()
     elif opciones == 4:
-        print("opcion 4")
-        menu_principal()
-    elif opciones == 5:
         print("Saliendo del programa, vuelva pronto")
         
     else:
