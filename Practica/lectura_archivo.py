@@ -61,7 +61,7 @@ class lectura_archivo:
 
         for nuevo_produc in self.listas_nuevo_produc:
             articulo = nuevo_produc.split(" ",1)
-            print(articulo)
+            
             self.verificar.append(articulo[0])
             
             articulo.pop(0)
@@ -82,15 +82,17 @@ class lectura_archivo:
         elif verificar == "vender_producto":
             print("vender")
 
+        else:
+            print("Opción inválida")
+
     def registar_bodega(self,produc,cantidad,ubicaciones):
+        for indice, producto_registrado in enumerate(self.producto):
+            if producto_registrado == produc and self.ubicacion[indice].strip() == ubicaciones.strip():
+                self.cantidad[indice] = str(int(self.cantidad[indice]) + int(cantidad))
+                print("Se agregó stock:", produc, ubicaciones, "Cantidad actual:", self.cantidad[indice])
+                break
+        else:
+            print("articulo no encontrado")
 
-        for indice, productos  in enumerate(self.producto):
-            print(produc,ubicaciones)
-            if productos == produc and ubicaciones.strip() == self.ubicacion[indice].strip():
-                self.cantidad[indice] = str(int(self.cantidad[indice])+ int(cantidad))
-                print(self.cantidad)
-                
-            else:
-                print("no se encuntra")
-                
-
+    def vender_prodcuto(self,produc,cantidad,ubicaciones):
+        pass

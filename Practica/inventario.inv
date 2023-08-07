@@ -1,4 +1,4 @@
-crear_producto Manzanas;100;2.50;BodegaA
 crear_producto Uva;120;2.40;BogegaD
 crear_producto Pera;100;2.30;BogegaC
 crear_producto Naranja;120;2.70;BogegaO
+crear_producto Manzanas;100;2.50;BodegaA
