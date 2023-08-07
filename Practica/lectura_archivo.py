@@ -80,19 +80,35 @@ class lectura_archivo:
             self.registar_bodega(producto,cantidad,ubicacion)
             
         elif verificar == "vender_producto":
-            print("vender")
+            self.vender_prodcuto(producto,cantidad,ubicacion)
 
         else:
             print("Opción inválida")
 
     def registar_bodega(self,produc,cantidad,ubicaciones):
+        
         for indice, producto_registrado in enumerate(self.producto):
             if producto_registrado == produc and self.ubicacion[indice].strip() == ubicaciones.strip():
                 self.cantidad[indice] = str(int(self.cantidad[indice]) + int(cantidad))
-                print("Se agregó stock:", produc, ubicaciones, "Cantidad actual:", self.cantidad[indice])
+                print("- Se agregó stock:", produc, ubicaciones, "Cantidad actual:", self.cantidad[indice])
                 break
         else:
-            print("articulo no encontrado")
+            print("*Error,articulo no encontrado")
+            
 
     def vender_prodcuto(self,produc,cantidad,ubicaciones):
+        found = False
+        for i, producto_vender in enumerate(self.producto):
+            if producto_vender == produc and self.ubicacion[i].strip() == ubicaciones.strip():
+                found = True
+                if int(cantidad) <= int(self.cantidad[i]):
+                    self.cantidad[i] = str(int(self.cantidad[i]) - int(cantidad))
+                    print("-- Se vendio en stock:", produc, ubicaciones, "Cantidad actual:", self.cantidad[i])
+                    break
+                else:
+                    print("*-Cantidad excede la existente para el artículo:", produc,ubicaciones)
+        if not found:
+            print("**Error,articulo no encontrado")
+
+    def crear_arhivo_txt(self,ruta):
         pass
