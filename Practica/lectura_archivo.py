@@ -5,26 +5,30 @@ class lectura_archivo:
         self.cantidad = []
         self.precios = []
         self.ubicacion = []
+        #lista
         self.lista = []
+        self.listas_nuevo_produc = []
         #lista para nuevo producto 
         self.nuevo_producto = []
         self.nueva_cantaidad = []
         self.nueva_ubicaciones = []
+        #guarda el indice 0
+        self.verificar = []
     
 
     def cargar_inventario_inicial(self,ruta):
-        lista = [] 
+        self.lista = [] 
 
         archivo  = open(f"C:/Users/Usuario/Desktop/Usac/13-Semestre4/LenguajesFormales/Lab-Lenguajes/Practica 1/Practica/{ruta}.inv","r")
 
         list = archivo.readline()
         while list:
-            lista.append(list)
+            self.lista.append(list)
             list = archivo.readline()
         
         archivo.close
 
-        for productos in lista:
+        for productos in self.lista:
             articulo = productos.split(" ",1)
             articulo.pop(0)
             self.producto.append(articulo[0].split(";")[0])
@@ -37,45 +41,56 @@ class lectura_archivo:
         print(self.cantidad)
         print(self.precios)
         print(self.ubicacion)
-        print(self.producto[0])
+
 
         return self.producto,self.cantidad,self.precios,self.ubicacion
     
     
+
     def cargar_instruccion_movimiento(self,ruta):
         
+
         archivo  = open(f"C:/Users/Usuario/Desktop/Usac/13-Semestre4/LenguajesFormales/Lab-Lenguajes/Practica 1/Practica/{ruta}.mov","r")
 
         list = archivo.readline()
         while list:
-            self.lista.append(list)
+            self.listas_nuevo_produc.append(list)
             list = archivo.readline()
         
         archivo.close
 
-        for nuevo_producto in self.lista:
-            articulo = nuevo_producto.split(" ",1)
+        for nuevo_produc in self.listas_nuevo_produc:
+            articulo = nuevo_produc.split(" ",1)
+            print(articulo)
+            self.verificar.append(articulo[0])
+            
             articulo.pop(0)
             self.nuevo_producto.append(articulo[0].split(";")[0])
             self.nueva_cantaidad.append(articulo[0].split(";")[1])
             self.nueva_ubicaciones.append(articulo[0].split(";")[2])
-
-        for i,indicaciones in enumerate(self.lista):
-            self.verificar_producto(indicaciones,self.nuevo_producto[i],self.nueva_cantaidad[i], self.nueva_ubicaciones[i])
         
+        for i, verificacion in enumerate(self.verificar):
+            self.verificar_producto(verificacion,self.nuevo_producto[i],self.nueva_cantaidad[i],self.nueva_ubicaciones[i])
+            #self.nuevo_producto[i],self.nueva_cantaidad[i],self.nueva_ubicaciones[i]
 
-        print(self.lista)
+        return self.listas_nuevo_produc
 
-
-    def verificar_producto(self,indicaciones,nombre,cantadad,ubcaciones):
-        pass
-    
+    def verificar_producto(self,verificar,producto,cantidad,ubicacion):
+        if verificar == "agregar_stock":
+            self.registar_bodega(producto,cantidad,ubicacion)
             
-        
-    
+        elif verificar == "vender_producto":
+            print("vender")
 
+    def registar_bodega(self,produc,cantidad,ubicaciones):
 
-    
+        for indice, productos  in enumerate(self.producto):
+            print(produc,ubicaciones)
+            if productos == produc and ubicaciones.strip() == self.ubicacion[indice].strip():
+                self.cantidad[indice] = str(int(self.cantidad[indice])+ int(cantidad))
+                print(self.cantidad)
+                
+            else:
+                print("no se encuntra")
+                
 
-    
-    

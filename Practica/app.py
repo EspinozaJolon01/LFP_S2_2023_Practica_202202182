@@ -12,8 +12,9 @@ def cargar_Inventario():
 def cargar_Movimeinto():
     ruta = input("ingrese la ruta: ")
     print("")
-    print("----------------Productos ----------------")
+    print("----------------Productos nuevos o vendidos ----------------")
     lectura.cargar_instruccion_movimiento(ruta)
+
 
 
 def menu_principal():
@@ -38,10 +39,9 @@ def menu_principal():
             print("No se encontro el archivo :(")
         menu_principal()
     elif opciones == 2:
-        try:
-            cargar_Movimeinto()
-        except:
-            print("No se encontro el archivo :(")
+        
+        cargar_Movimeinto()
+
         menu_principal()
     elif opciones == 3:
         print("opcion 3")
