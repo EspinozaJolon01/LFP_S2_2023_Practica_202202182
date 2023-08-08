@@ -5,6 +5,7 @@ class lectura_archivo:
         self.cantidad = []
         self.precios = []
         self.ubicacion = []
+        self.valor_total_prodcuto = []
         #lista
         self.lista = []
         self.listas_nuevo_produc = []
@@ -109,6 +110,23 @@ class lectura_archivo:
                     print("*-Cantidad excede la existente para el artículo:", produc,ubicaciones)
         if not found:
             print("**Error,articulo no encontrado")
+    
 
-    def crear_arhivo_txt(self,ruta):
-        pass
+    def crear_arhivo_txt(self):
+        
+        nombre_archivo = "inventario.txt"   
+        try:
+            with open(nombre_archivo, 'w') as archivo:
+                archivo.write("Inventario:\n")
+                archivo.write("{:<15} {:<10} {:<10} {:<10} {:<29}\n".format("Producto", "Cantidad", "Precio", "Bodega","Valor total"))
+                archivo.write("-" * 60 + "\n")
+                for i in range(len(self.producto)):
+                    valor_total = str(int(self.cantidad[i]) * float(self.precios[i]))
+                    self.valor_total_prodcuto.append(valor_total)
+                    archivo.write("{:<15} {:<10} {:<10} {:<10} {:<20}\n".format(str(self.producto[i]), str(self.cantidad[i]), str(self.precios[i]), str(self.ubicacion[i]), str(self.valor_total_prodcuto[i])))
+                
+            print("Archivo de inventario creado exitosamente. ")
+        
+        except Exception as e:
+            print("Error al crear el arivho de invetario: ",e)
+

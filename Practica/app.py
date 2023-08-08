@@ -15,7 +15,10 @@ def cargar_Movimeinto():
     print("----------------Productos nuevos o vendidos ----------------")
     lectura.cargar_instruccion_movimiento(ruta)
 
-
+def cargar_archivo():
+    print("")
+    print("----------------Archivo txt ----------------")
+    lectura.crear_arhivo_txt()
 
 def menu_principal():
 
@@ -39,12 +42,13 @@ def menu_principal():
             print("No se encontro el archivo :(")
         menu_principal()
     elif opciones == 2:
-        
-        cargar_Movimeinto()
-
+        try:
+            cargar_Movimeinto()
+        except:
+            print("No se encontro el archivo :(")
         menu_principal()
     elif opciones == 3:
-        print("opcion 3")
+        cargar_archivo()
         menu_principal()
     elif opciones == 4:
         print("Saliendo del programa, vuelva pronto")
