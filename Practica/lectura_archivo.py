@@ -118,12 +118,12 @@ class lectura_archivo:
         try:
             with open(nombre_archivo, 'w') as archivo:
                 archivo.write("Inventario:\n")
-                archivo.write("{:<15} {:<10} {:<10} {:<10} {:<29}\n".format("Producto", "Cantidad", "Precio", "Bodega","Valor total"))
-                archivo.write("-" * 60 + "\n")
+                archivo.write("{:<14} {:<14} {:<14} {:<14} {:<14}\n".format("Producto","Cantidad","Precio","Bodega","Valor total"))
+                archivo.write("-" * 70 + "\n")
                 for i in range(len(self.producto)):
-                    valor_total = str(int(self.cantidad[i]) * float(self.precios[i]))
+                    valor_total = int(self.cantidad[i]) * float(self.precios[i])
                     self.valor_total_prodcuto.append(valor_total)
-                    archivo.write("{:<15} {:<10} {:<10} {:<10} {:<20}\n".format(str(self.producto[i]), str(self.cantidad[i]), str(self.precios[i]), str(self.ubicacion[i]), str(self.valor_total_prodcuto[i])))
+                    archivo.write("{:<14} {:<14} {:<14} {:<20} {:>60.2f}\n".format(str(self.producto[i]), str(self.cantidad[i]), str(self.precios[i]), str(self.ubicacion[i]), self.valor_total_prodcuto[i]))
                 
             print("Archivo de inventario creado exitosamente. ")
         
