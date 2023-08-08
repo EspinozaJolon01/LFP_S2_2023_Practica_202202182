@@ -20,7 +20,7 @@ class lectura_archivo:
     def cargar_inventario_inicial(self,ruta):
         self.lista = [] 
 
-        archivo  = open(f"C:/Users/Usuario/Desktop/Usac/13-Semestre4/LenguajesFormales/Lab-Lenguajes/Practica 1/Practica/{ruta}.inv","r")
+        archivo  = open(f"C:/Users/Usuario/Desktop/documentos/{ruta}.inv","r")
 
         list = archivo.readline()
         while list:
@@ -51,7 +51,7 @@ class lectura_archivo:
     def cargar_instruccion_movimiento(self,ruta):
         
 
-        archivo  = open(f"C:/Users/Usuario/Desktop/Usac/13-Semestre4/LenguajesFormales/Lab-Lenguajes/Practica 1/Practica/{ruta}.mov","r")
+        archivo  = open(f"C:/Users/Usuario/Desktop/documentos/{ruta}.mov","r")
 
         list = archivo.readline()
         while list:

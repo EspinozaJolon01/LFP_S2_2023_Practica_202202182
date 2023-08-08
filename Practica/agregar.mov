@@ -1,9 +1,0 @@
-agregar_stock Manzanas;50;BodegaA
-agregar_stock Manzanas;50;BodegaC
-agregar_stock Uva;120;BogegaD
-vender_producto Pera;50;BogegaC
-vender_producto Pera;50;BogegaC
-vender_producto Pera;50;BogegaC
-vender_producto Pera;20;BodegaB
-vender_producto Pera;20;BodegaS
-vender_producto Pera;20;BodegaB
