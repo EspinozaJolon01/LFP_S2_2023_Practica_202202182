@@ -45,7 +45,7 @@ def menu_principal():
         try: 
             cargar_Movimeinto()
         except:
-            print("No se encontro el archivo :(")
+            print("No se encontro el archivo :(, lo sentimos")
         menu_principal()
     elif opciones == 3:
         cargar_archivo()
