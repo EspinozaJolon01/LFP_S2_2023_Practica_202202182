@@ -38,10 +38,10 @@ class lectura_archivo:
             self.ubicacion.append(articulo[0].split(";")[3])
 
 
-        print(self.producto)
-        print(self.cantidad)
-        print(self.precios)
-        print(self.ubicacion)
+        print("Productos: ",self.producto)
+        print("Cantidad: ",self.cantidad)
+        print("Precios: ",self.precios)
+        print("Bodegas: ",self.ubicacion)
 
 
         return self.producto,self.cantidad,self.precios,self.ubicacion
@@ -49,8 +49,10 @@ class lectura_archivo:
     
 
     def cargar_instruccion_movimiento(self,ruta):
-        
 
+        if ( self.verificar_Lista_Productos()) == False:
+            return
+        
         archivo  = open(f"C:/Users/Usuario/Desktop/documentos/{ruta}.mov","r")
 
         list = archivo.readline()
@@ -110,20 +112,30 @@ class lectura_archivo:
                     print("*-Cantidad excede la existente para el artículo:", produc,ubicaciones)
         if not found:
             print("**Error,articulo no encontrado")
-    
+
+    def verificar_Lista_Productos(self):
+        if len(self.producto) == 0:
+            print("Error! No hay datos para mostrar")
+            return False
+        
+        return True
 
     def crear_arhivo_txt(self):
+
+        if ( self.verificar_Lista_Productos()) == False:
+            return
         
         nombre_archivo = "inventario.txt"   
         try:
             with open(nombre_archivo, 'w') as archivo:
                 archivo.write("Inventario:\n")
-                archivo.write("{:<14} {:<14} {:<14} {:<14} {:<14}\n".format("Producto","Cantidad","Precio","Bodega","Valor total"))
+                archivo.write("{:<14} {:<14} {:<14} {:<14} {:<20}\n".format("Producto","Cantidad","Precio","Valor total","Bodega"))
                 archivo.write("-" * 70 + "\n")
                 for i in range(len(self.producto)):
                     valor_total = int(self.cantidad[i]) * float(self.precios[i])
-                    self.valor_total_prodcuto.append(valor_total)
-                    archivo.write("{:<14} {:<14} {:<14} {:<20} {:>60.2f}\n".format(str(self.producto[i]), str(self.cantidad[i]), str(self.precios[i]), str(self.ubicacion[i]), self.valor_total_prodcuto[i]))
+                    valor_float = round(valor_total,2)
+                    self.valor_total_prodcuto.append(valor_float)
+                    archivo.write("{:<14} {:<14} {:<14} {:<14} {:>10}\n".format(str(self.producto[i]), str(self.cantidad[i]), str(self.precios[i]), str(self.valor_total_prodcuto[i]), str(self.ubicacion[i])))
                 
             print("Archivo de inventario creado exitosamente. ")
         
