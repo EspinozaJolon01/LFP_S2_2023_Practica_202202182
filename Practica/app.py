@@ -16,9 +16,10 @@ def cargar_Movimeinto():
     lectura.cargar_instruccion_movimiento(ruta)
 
 def cargar_archivo():
+    ruta = input("ingrese la ruta: ")
     print("")
     print("----------------Archivo txt ----------------")
-    lectura.crear_arhivo_txt()
+    lectura.crear_arhivo_txt(ruta)
 
 def menu_principal():
 

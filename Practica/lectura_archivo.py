@@ -120,12 +120,12 @@ class lectura_archivo:
         
         return True
 
-    def crear_arhivo_txt(self):
+    def crear_arhivo_txt(self,ruta):
 
         if ( self.verificar_Lista_Productos()) == False:
             return
         
-        nombre_archivo = "inventario.txt"   
+        nombre_archivo = f"{ruta}.txt"  
         try:
             with open(nombre_archivo, 'w') as archivo:
                 archivo.write("Inventario:\n")
