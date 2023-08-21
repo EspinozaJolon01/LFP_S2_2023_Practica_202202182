@@ -111,7 +111,7 @@ class lectura_archivo:
                 else:
                     print("*-Cantidad excede la existente para el artículo:", produc,ubicaciones)
         if not found:
-            print("**Error,articulo no encontrado")
+            print(f"**Error,articulo no encontrado: {produc}, en la bodega: {ubicaciones}")
 
     def verificar_Lista_Productos(self):
         if len(self.producto) == 0:
