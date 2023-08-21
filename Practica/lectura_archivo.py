@@ -96,7 +96,7 @@ class lectura_archivo:
                 print("- Se agregó stock:", produc, ubicaciones, "Cantidad actual:", self.cantidad[indice])
                 break
         else:
-            print("*Error,articulo no encontrado")
+            print(f"*Error,articulo no encontrado: {produc}, en la bodega: {ubicaciones}")
             
 
     def vender_prodcuto(self,produc,cantidad,ubicaciones):

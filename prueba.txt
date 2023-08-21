@@ -1,0 +1,22 @@
+Inventario:
+Producto       Cantidad       Precio         Valor total    Bodega              
+----------------------------------------------------------------------
+Manzanas       152            2.50           380.0            BodegaA
+
+Peras          50             3.00           150.0            BodegaB
+
+Platanos       55             1.75           96.25            BodegaC
+
+Coco           60             1.85           111.0            BodegaD
+
+Banano         35             1.75           61.25            BodegaE
+
+Coca           4              3.75           15.0             BodegaA
+
+Jabon          80             4.00           320.0            BodegaF
+
+Toallas        44             22.50          990.0            BodegaG
+
+Sandia         12             12.50          150.0            BodegaC
+
+Melocoton      56             80.00          4480.0            BodegaD
